@@ -16,4 +16,11 @@ class Mastermodel extends CI_Model
         $hasil = $kueri->result();
         return $hasil;
     }
+
+    public function jurusan()
+    {
+        $kueri = $this->db->get('jurusan');
+        $hasil = $kueri->result();
+        return $hasil;
+    }
 }

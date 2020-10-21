@@ -36,7 +36,6 @@ $this->load->view('dist/_partials/header');
                                             <th>Nama Mahasiswa</th>
                                             <th>Status</th>
                                             <th>Jumlah</th>
-                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -55,13 +54,6 @@ $this->load->view('dist/_partials/header');
                                                 </td>
                                                 <td>
                                                     Rp. <?= $tg->jumlah; ?>
-                                                </td>
-                                                <td>
-                                                    <div class="row">
-                                                        <a href="#" class="btn btn-sm btn-success m-1">Detail</a>
-                                                        <a href="#" class="btn btn-sm btn-warning m-1">Detail</a>
-                                                        <a href="#" class="btn btn-sm btn-danger m-1">Detail</a>
-                                                    </div>
                                                 </td>
                                             </tr>
                                         <?php endforeach ?>

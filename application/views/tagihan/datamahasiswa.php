@@ -22,7 +22,7 @@ $this->load->view('dist/_partials/header');
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <a href="<?= base_url('tagihan/add'); ?>" class="btn btn-primary">Tambah Tagihan</a>
+                            <a href="<?= base_url('tagihan/bayar/' . $this->session->userdata('id_user')); ?>" class="btn btn-primary">Bayar Tagihan</a>
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
@@ -36,7 +36,6 @@ $this->load->view('dist/_partials/header');
                                             <th>Nama Mahasiswa</th>
                                             <th>Status</th>
                                             <th>Jumlah</th>
-                                            <th>Action</th>
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -55,13 +54,6 @@ $this->load->view('dist/_partials/header');
                                                 </td>
                                                 <td>
                                                     Rp. <?= $tg->jumlah; ?>
-                                                </td>
-                                                <td>
-                                                    <div class="row">
-                                                        <a href="#" class="btn btn-sm btn-success m-1">Detail</a>
-                                                        <a href="#" class="btn btn-sm btn-warning m-1">Detail</a>
-                                                        <a href="#" class="btn btn-sm btn-danger m-1">Detail</a>
-                                                    </div>
                                                 </td>
                                             </tr>
                                         <?php endforeach ?>

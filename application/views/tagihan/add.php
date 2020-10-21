@@ -31,7 +31,7 @@ $this->load->view('dist/_partials/header');
                                         <input name="nama_tagihan" type="text" class="form-control">
                                     </div>
                                 </div>
-                                <div class="form-group row mb-4">
+                                <!-- <div class="form-group row mb-4">
                                     <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Mahasiswa</label>
                                     <div class="col-sm-12 col-md-7">
                                         <select class="form-control selectric" name="id_user">
@@ -44,19 +44,31 @@ $this->load->view('dist/_partials/header');
                                             <?php endforeach ?>
                                         </select>
                                     </div>
+                                </div> -->
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Angkatan</label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <input name="angkatan" type="number" class="form-control">
+                                    </div>
                                 </div>
                                 <div class="form-group row mb-4">
-                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Semester</label>
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Jurusan</label>
                                     <div class="col-sm-12 col-md-7">
-                                        <select class="form-control selectric" name="id_semester">
-                                            <option value="">-- Pilih Semester --</option>
+                                        <select class="form-control selectric" name="id_jurusan">
+                                            <option value="">-- Pilih Jurusan --</option>
                                             <?php
-                                            $sms = $this->mastermodel->semester();
-                                            foreach ($sms as $s) :
+                                            $jurusan = $this->mastermodel->jurusan();
+                                            foreach ($jurusan as $js) :
                                             ?>
-                                                <option value="<?= $s->id_semester; ?>"><?= $s->semester; ?></option>
+                                                <option value="<?= $js->id_jurusan; ?>"><?= $js->jurusan; ?></option>
                                             <?php endforeach ?>
                                         </select>
+                                    </div>
+                                </div>
+                                <div class="form-group row mb-4">
+                                    <label class="col-form-label text-md-right col-12 col-md-3 col-lg-3">Jumlah Tagihan</label>
+                                    <div class="col-sm-12 col-md-7">
+                                        <input name="jumlah" type="number" class="form-control">
                                     </div>
                                 </div>
                                 <div class="form-group row mb-4">

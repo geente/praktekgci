@@ -23,7 +23,14 @@ defined('BASEPATH') or exit('No direct script access allowed');
           <li><a class="nav-link" href="<?php echo base_url(); ?>dist/layout_top_navigation">Top Navigation</a></li>
         </ul>
       </li> -->
-      <li class="<?php echo $this->uri->segment(1) == 'tagihan' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url('tagihan'); ?>"><i class="far fa-square"></i> <span>Tagihan</span></a></li>
+      <?php if ($this->session->userdata('id_level') == 2) { ?>
+        <li class="<?php echo $this->uri->segment(1) == 'tagihan' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url('tagihan'); ?>"><i class="far fa-square"></i> <span>Tagihan</span></a></li>
+      <?php } elseif ($this->session->userdata('id_level') == 3) { ?>
+        <li class="<?php echo $this->uri->segment(1) == 'tagihan' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url('tagihan/mahasiswa/' . $this->session->userdata('id_user')); ?>"><i class="far fa-square"></i> <span>Tagihan</span></a></li>
+      <?php } else { ?>
+        <li class="<?php echo $this->uri->segment(1) == 'tagihan' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url('tagihan/pimpinan') ?>"><i class="far fa-square"></i> <span>Laporan Tagihan</span></a></li>
+        <li class="<?php echo $this->uri->segment(1) == 'tagihan' ? 'active' : ''; ?>"><a class="nav-link" href="<?php echo base_url('tagihan/grafik') ?>"><i class="far fa-square"></i> <span>Laporan Grafik</span></a></li>
+      <?php } ?>
     </ul>
   </aside>
 </div>

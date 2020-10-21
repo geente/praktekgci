@@ -29,11 +29,62 @@ class Tagihan extends CI_Controller
 
     public function insert()
     {
+        $id_tagihan = $this->tagihanmodel->getTagihan();
         $this->nama_tagihan = $this->input->post('nama_tagihan');
-        $this->id_user = $this->input->post('id_user');
-        $this->id_semester = $this->input->post('id_semester');
+        $this->angkatan = $this->input->post('angkatan');
+        $this->jumlah = $this->input->post('jumlah');
+        $id_jurusan = $this->input->post('id_jurusan');
 
         $this->tagihanmodel->insert($this);
-        $this->load->view('tagihan/data');
+
+        $mhs = $this->tagihanmodel->getMhs($this->angkatan, $id_jurusan);
+
+        for ($i = 0; $i < count($mhs); $i++) {
+            $data = [
+                'id_user' => $mhs[$i]->id_user,
+                'id_tagihan' => $id_tagihan[0]->id_tagihan + 1 + $i
+            ];
+            $this->tagihanmodel->insertTagihanMhs($data);
+        }
+
+        $this->session->set_flashdata('success', 'Berhasil menambah data aset');
+        header('location:' . base_url('tagihan'));
+        exit;
+    }
+
+    public function mahasiswa($id)
+    {
+        $data = array(
+            'title' => "Data Tagihan Mahasiswa",
+            'tagihan' => $this->tagihanmodel->mahasiswa($id)
+        );
+        $this->load->view('tagihan/datamahasiswa', $data);
+    }
+
+    public function bayar($id)
+    {
+        $data = array(
+            'title' => "Data Tagihan Mahasiswa",
+            'tagihan' => $this->tagihanmodel->bayar($id)
+        );
+        $this->load->view('tagihan/detailmahasiswa', $data);
+    }
+
+    public function pimpinan()
+    {
+        $data = array(
+            'title' => "Data Tagihan",
+            'tagihan' => $this->tagihanmodel->tampilData()
+        );
+        $this->load->view('tagihan/pimpinan', $data);
+    }
+
+    public function grafik()
+    {
+        $data = array(
+            'title' => "Data Tagihan",
+            'tagihan' => $this->tagihanmodel->tampilData()
+        );
+        $this->load->view('tagihan/grafik', $data);
     }
 }
